@@ -1,0 +1,2 @@
+test_connect:
+  - ['10.10.10.10','MegaRobot Technologies,ThorPG',True]
