@@ -15,7 +15,7 @@ def print_log(*args):
     global logfilename
     if logfile == None:
         logfilename = time.strftime('%Y_%m_%d', time.localtime(time.time())) +".log"
-        logfile = open(logfilename, "wt")
+        logfile = open(logfilename, "at")
 
     logfile.write( strTime + ": ")
     logfile.write(str(args) + '\n')
