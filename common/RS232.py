@@ -14,7 +14,7 @@ def print_log(*args):
     global logfile
     global logfilename
     if logfile == None:
-        logfilename = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime(time.time())) +".log"
+        logfilename = time.strftime('%Y_%m_%d', time.localtime(time.time())) +".log"
         logfile = open(logfilename, "wt")
 
     logfile.write( strTime + ": ")
@@ -26,16 +26,17 @@ class Communication():
 
     #初始化
     def __init__(self,com,bps,timeout):
-        self.port = com
+        self.com = com
         self.port = bps
         self.timeout =timeout
         Ret = False
         try:
             # 打开串口，并得到串口对象
-            self.main_engine= serial.Serial(com,bps,timeout=timeout)
+            self.main_engine= serial.Serial(self.com,self.port,timeout=timeout)
             # 判断是否打开成功
             if (self.main_engine.is_open):
                 Ret = True
+                self.main_engine.close()
         except Exception as e:
             print_log("---异常---：", e)
 
@@ -61,7 +62,7 @@ class Communication():
     #关闭串口
     def Close_Engine(self):
         self.main_engine.close()
-        print_log(self.main_engine.is_open)  # 检验串口是否打开
+        #print_log(self.main_engine.is_open)  # 检验串口是否打开
 
     # 打印可用串口列表
     @staticmethod
