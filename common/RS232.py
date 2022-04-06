@@ -144,6 +144,47 @@ class Communication():
                 print("异常报错：",e)
                 print_log("error:", e)
 
+    def Recive_data_testm695(self):
+        ''# 循环接收数据，此为死循环，可用线程实现
+        print("开始接收数据：")
+        rdata=str()
+        while True:
+            try:
+                '''if self.main_engine.in_waiting:
+                    print("接收到几个字节数据：",self.main_engine.in_waiting)
+                    if(way == 0):
+                        #一个字节一个字节的接收
+                        for i in range(self.main_engine.in_waiting):
+                            data = self.Read_Size(1).hex()#转为十六进制
+                            data = int(data,16)#转为十进制
+                            if (data == r"end\r\n"):  # 退出标志
+                                break
+                            else:
+                                 print("收到数据：",data)
+                    if(way == 1):
+                        #整体接收
+                        #data = self.main_engine.read(self.main_engine.in_waiting).decode("utf-8")#方式一
+                        data = self.main_engine.read_all().decode("utf-8") #方式二
+
+                        if (data == r"end\r\n"):  # 退出标志
+                            break
+                        else:
+                            print("收到数据：", data)
+                            print_log("Recv:", data)
+                            continue
+                    return data'''
+                data = self.main_engine.readline().decode("gbk")
+                if (data != "end\r\n"):
+                    rdata = data+rdata
+                    continue
+                else:
+                    rdata = data+rdata
+                    data = rdata.split('\r\n')
+                    data = list(reversed(data))
+                    print_log("Recv:", data)
+                    return data
+            except Exception as e:
+                print("异常报错：",e)
 
 
 #Ret =False #是否创建成功标志
