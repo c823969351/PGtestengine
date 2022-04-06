@@ -124,7 +124,7 @@ class Communication():
                         for i in range(self.main_engine.in_waiting):
                             data = self.Read_Size(1).hex()#转为十六进制
                             data = int(data,16)#转为十进制
-                            if (data == "end"):  # 退出标志
+                            if (data == "end\r\n"):  # 退出标志
                                 break
                             else:
                                  print("收到数据：",data)
@@ -134,7 +134,7 @@ class Communication():
                         # data = self.main_engine.read(self.main_engine.in_waiting).decode("utf-8")#方式一
                         data = self.main_engine.read_all().decode("utf-8") #方式二
 
-                        if (data == "end"):  # 退出标志
+                        if (data == "end\r\n"):  # 退出标志
                             break
                         else:
                             print("收到数据：", data)
