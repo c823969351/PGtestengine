@@ -3,7 +3,7 @@ import paramiko
 
 
 class Remote_ssh():
-    def __init__(self, port, user, host, password):
+    def __init__(self, host, password, port=22, user='root'):
         self.port = port
         self.user = user
         self.password = password
@@ -19,4 +19,4 @@ class Remote_ssh():
                               password=self.password)
         stdin, stdout, stderr = self.myclient.exec_command(self.command)
         print('{}===>>>'.format(self.host))
-        print(stdout.read())
+        print(stdout.readlines())
