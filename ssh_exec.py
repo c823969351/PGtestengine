@@ -2,8 +2,9 @@
 from config.sources.readconfig import *
 import sys
 from common.Remote_ssh import *
+import time
 
-paramiko.util.log_to_file('ssh.log')
+paramiko.util.log_to_file('ssh{}.log'.format(time.strftime("%Y-%m-%d", time.localtime()) ))
 
 arg_list = []
 arg_list.extend(sys.argv)
@@ -114,5 +115,5 @@ if  len(d_remotefile) > 0 and len(d_localfile) > 0 and type(hosts) == tuple:
         exec_download()
     elif len(hosts) >= 2:
         print('download的时候请只指定一个主机,如果是配置文件配置的主机组，请检查配置文件主机组中是不是有多个主机')
-else:
+elif len(d_remotefile) > 0 and len(d_localfile) > 0:
     exec_download()
