@@ -1,6 +1,9 @@
 #-*- encoding:utf8 -*-
 import paramiko
 import sys
+import time
+
+paramiko.util.log_to_file('ssh{}.log'.format(time.strftime("%Y-%m-%d", time.localtime())))
 
 
 class Remote():
@@ -52,6 +55,6 @@ class Remote():
 if __name__ == "__main__":
     remote = Remote('192.168.64.130', 'jw.chen')
     #remote.download('D:/PGtestengine/aaa.log', '/tmp/ssh.log')
-    remote.put('D:/PGtestengine/ssh.log',
-               '/tmp/ssh.log')
+    #remote.put('D:/PGtestengine/ssh.log',
+    #           '/tmp/ssh.log')
     remote.command('ls /')

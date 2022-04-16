@@ -2,9 +2,7 @@
 from config.sources.readconfig import *
 import sys
 from common.Remote_ssh import *
-import time
 
-paramiko.util.log_to_file('ssh{}.log'.format(time.strftime("%Y-%m-%d", time.localtime()) ))
 
 arg_list = []
 arg_list.extend(sys.argv)
