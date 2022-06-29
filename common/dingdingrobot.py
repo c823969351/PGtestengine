@@ -5,4 +5,4 @@ secret = 'SEC4d9eea43714470401d9d926412188201f39e027f92b8c16caf8a82e2e61fe26f'
 
 dingding = DingtalkChatbot(webhook,secret=secret,pc_slide=True,fail_notice=True)
 
-dingding .send_text('猜猜我是谁',is_at_all=False)
+dingding .send_text('PG测试机器人',is_at_all=False)

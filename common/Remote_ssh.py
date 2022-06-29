@@ -53,8 +53,8 @@ class Remote():
 
 
 if __name__ == "__main__":
-    remote = Remote('192.168.64.130', 'jw.chen')
+    remote = Remote('10.10.10.10', 'mega.tech')#'192.168.64.130', 'jw.chen'
     #remote.download('D:/PGtestengine/aaa.log', '/tmp/ssh.log')
     #remote.put('D:/PGtestengine/ssh.log',
     #           '/tmp/ssh.log')
-    remote.command('ls /')
+    remote.command('free')
